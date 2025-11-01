@@ -1,0 +1,100 @@
+.profile-sidebar {
+  width: 15%;
+  min-width: 180px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: sticky;
+  top: 90px;
+  height: 75vh;
+  padding-top: 10px;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+/* Sidebar Buttons */
+.side-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.side-buttons button {
+  border: 1px solid rgba(180, 120, 255, 0.2);
+  background: transparent;
+  border-radius: 0;
+  color: #4a2c73;
+  font-weight: 500;
+  padding: 12px 18px;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+/* Wipe hover */
+.side-buttons button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(212, 125, 196, 0.15);
+  transition: all 0.4s ease;
+}
+
+.side-buttons button:hover::before {
+  left: 0;
+}
+
+.side-buttons button:hover {
+  color: #9c27b0;
+}
+
+/* Mobile Menu */
+.menu-btn {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  padding: 10px 14px;
+  font-size: 20px;
+  color: #4a2c73;
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  z-index: 2000;
+}
+
+/* Mobile Sidebar */
+@media (max-width: 900px) {
+  .profile-sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100%;
+    width: 60%;
+    border-right: none;
+    transition: left 0.4s ease;
+    z-index: 1500;
+  }
+
+  .profile-sidebar.open {
+    left: 0;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .main-content.blurred {
+    filter: blur(3px);
+  }
+}
