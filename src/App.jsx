@@ -16,12 +16,12 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/Profile" element={<Profile />} />
           <Route path="/WorkLab" element={<WorkLab />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/messages" element={<Messages />} />
-          <Route path="/bookmarks" element={<Bookmarks />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/Community" element={<Community />} />
+          <Route path="/Messages" element={<Messages />} />
+          <Route path="/Bookmarks" element={<Bookmarks />} />
+          <Route path="/Settings" element={<Settings />} />
         </Routes>
       </div>
     </Router>
