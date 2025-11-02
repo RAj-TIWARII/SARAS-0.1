@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaArrowLeft, FaPlus, FaHeart, FaComment, FaShare } from "react-icons/fa";
+import { FaArrowLeft, FaPlus, FaHeart, FaComment, FaShare, FaUserPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./Community.css";
 
@@ -18,7 +18,7 @@ export default function Community() {
             title:
               "How can ISRO’s future missions benefit from AI-based navigation systems?",
             description:
-              "I’ve been exploring how deep learning can optimize real-time path correction and fault detection for lunar and interplanetary missions.",
+              "Exploring how deep learning can optimize real-time path correction and fault detection for lunar and interplanetary missions.",
             tags: ["AI", "SpaceTech", "ISRO"],
             likes: 34,
             comments: 4,
@@ -27,10 +27,9 @@ export default function Community() {
             id: 2,
             user: "Kiran Patel",
             username: "@kiran_p",
-            title:
-              "Suggestions for low-cost telemetry systems for student rockets?",
+            title: "Suggestions for low-cost telemetry systems for student rockets?",
             description:
-              "Looking for budget-friendly solutions for data acquisition and live feed tracking in micro rocket prototypes under ₹2000.",
+              "Looking for budget-friendly solutions for data acquisition and live tracking in micro rocket prototypes under ₹2000.",
             tags: ["Arduino", "Aerospace", "Electronics"],
             likes: 21,
             comments: 3,
@@ -39,11 +38,7 @@ export default function Community() {
   });
 
   const [showModal, setShowModal] = useState(false);
-  const [newPost, setNewPost] = useState({
-    title: "",
-    description: "",
-    tags: "",
-  });
+  const [newPost, setNewPost] = useState({ title: "", description: "", tags: "" });
 
   useEffect(() => {
     localStorage.setItem("sarasDiscussions", JSON.stringify(discussions));
@@ -74,25 +69,13 @@ export default function Community() {
       {/* Sidebar */}
       <aside className="profile-sidebar">
         <div className="side-buttons">
-          <button className="side-btn" onClick={() => navigate("/")}>
-            Home
-          </button>
-          <button className="side-btn" onClick={() => navigate("/profile")}>
-            Profile
-          </button>
-          <button className="side-btn" onClick={() => navigate("/worklab")}>
-            Work Lab
-          </button>
-          <button className="side-btn side-active" onClick={() => navigate("/community")}>
-            Community
-          </button>
-          <button className="side-btn" onClick={() => navigate("/messages")}>
-  Messages
-</button>
-
-            <button className="side-btn" onClick={() => navigate("/bookmarks")}>Bookmarks</button>
+          <button className="side-btn" onClick={() => navigate("/")}>Home</button>
+          <button className="side-btn" onClick={() => navigate("/profile")}>Profile</button>
+          <button className="side-btn" onClick={() => navigate("/worklab")}>Work Lab</button>
+          <button className="side-btn side-active" onClick={() => navigate("/community")}>Community</button>
+          <button className="side-btn" onClick={() => navigate("/messages")}>Messages</button>
+          <button className="side-btn" onClick={() => navigate("/bookmarks")}>Bookmarks</button>
           <button className="side-btn" onClick={() => navigate("/settings")}>Settings</button>
-
         </div>
       </aside>
 
@@ -100,7 +83,7 @@ export default function Community() {
       <main className="community-main">
         <h1 className="community-title">Community</h1>
         <p className="community-subtitle">
-          Share your thoughts, questions, and discoveries with others in the SARAS network.
+          Share your questions, insights, and discoveries with others in the SARAS network.
         </p>
 
         <button className="add-discussion-btn" onClick={() => setShowModal(true)}>
@@ -111,8 +94,13 @@ export default function Community() {
           {discussions.map((post) => (
             <div className="discussion-card" key={post.id}>
               <div className="user-info">
-                <h4>{post.user}</h4>
-                <p>{post.username}</p>
+                <div>
+                  <h4>{post.user}</h4>
+                  <p>{post.username}</p>
+                </div>
+                <button className="join-btn">
+                  <FaUserPlus /> Join
+                </button>
               </div>
 
               <div className="discussion-content">
@@ -122,9 +110,7 @@ export default function Community() {
 
               <div className="discussion-tags">
                 {post.tags.map((t, i) => (
-                  <span className="tag" key={i}>
-                    {t}
-                  </span>
+                  <span className="tag" key={i}>{t}</span>
                 ))}
               </div>
 
@@ -141,12 +127,8 @@ export default function Community() {
                 >
                   <FaHeart /> {post.likes}
                 </button>
-                <button className="action-btn">
-                  <FaComment /> {post.comments}
-                </button>
-                <button className="action-btn">
-                  <FaShare />
-                </button>
+                <button className="action-btn"><FaComment /> {post.comments}</button>
+                <button className="action-btn"><FaShare /></button>
               </div>
             </div>
           ))}
@@ -176,7 +158,7 @@ export default function Community() {
         </div>
       </aside>
 
-      {/* Add Discussion Modal */}
+      {/* Modal */}
       {showModal && (
         <div className="modal-backdrop" onClick={() => setShowModal(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -190,28 +172,20 @@ export default function Community() {
             <textarea
               placeholder="Write your thoughts..."
               value={newPost.description}
-              onChange={(e) =>
-                setNewPost({ ...newPost, description: e.target.value })
-              }
+              onChange={(e) => setNewPost({ ...newPost, description: e.target.value })}
             />
             <input
               type="text"
               placeholder="Tags (comma separated)"
               value={newPost.tags}
-              onChange={(e) =>
-                setNewPost({ ...newPost, tags: e.target.value })
-              }
+              onChange={(e) => setNewPost({ ...newPost, tags: e.target.value })}
             />
-
             <div className="modal-actions">
-              <button className="btn-cancel" onClick={() => setShowModal(false)}>
-                Cancel
-              </button>
+              <button className="btn-cancel" onClick={() => setShowModal(false)}>Cancel</button>
               <button
                 className="btn-save"
                 onClick={() => {
-                  if (!newPost.title || !newPost.description)
-                    return alert("Please fill all fields!");
+                  if (!newPost.title || !newPost.description) return alert("Please fill all fields!");
                   const tagArray = newPost.tags.split(",").map((t) => t.trim());
                   const updated = [
                     ...discussions,
