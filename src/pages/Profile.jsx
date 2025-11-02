@@ -1,182 +1,744 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaChartLine, FaBriefcase, FaGraduationCap, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
-import "./Profile.css";
+:root {
+  /* Theme colors — wheat + lotus pink blend */
+  --wheat-100: #fbf3e6;
+  --wheat-200: #f3e0be;
+  --wheat-300: #e8cfa0;
+  --lotus-100: #f6e0f0;
+  --lotus-200: #d47dc4;
+  --lotus-300: #b85aa5;
+  --glass: rgba(255,255,255,0.15);
+  --text: #222;
+  --muted: #666;
+  --card-bg: rgba(255,255,255,0.92);
+  --border: rgba(0,0,0,0.06);
+  --accent-glass: rgba(212,125,196,0.12);
+}
 
-export default function Profile() {
-  const navigate = useNavigate();
-  const [active, setActive] = useState("asked");
-  const [showEdit, setShowEdit] = useState(false);
+/* Base */
+html {
+  scroll-behavior: smooth;
+}
 
-  const defaultName = "Raj Tiwari";
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(180deg, var(--wheat-100), var(--lotus-100));
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  return (
-    <div className="saras-page profile-page">
-      {/* NAVBAR */}
-      <header className="saras-navbar">
-        <div className="nav-left-group">
-          <div className="nav-back" onClick={() => navigate(-1)} aria-label="Back">
-            <FaArrowLeft />
-          </div>
-          <div className="saras-title" aria-hidden="true">
-            <span className="lotus">SARA</span><span className="softblue">S</span>
-          </div>
-        </div>
+/* 🌸 Navbar */
+.saras-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  backdrop-filter: blur(12px) saturate(1.2);
+  background: rgba(255,255,255,0.12);
+  transition: all 0.35s ease;
+  z-index: 999;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+}
 
-        <div className="nav-right">
-          <span className="user-login">Login</span>
-        </div>
-      </header>
+.nav-left-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 
-      {/* SIDEBAR */}
-      <aside className="profile-sidebar">
-        <div className="side-buttons">
-          <button onClick={() => navigate("/")}>Home</button>
-          <button className="side-active" onClick={() => navigate("/profile")}>Profile</button>
-          <button onClick={() => navigate("/worklab")}>Work Lab</button>
-          <button onClick={() => navigate("/community")}>Community</button>
-          <button onClick={() => navigate("/messages")}>Messages</button>
-          <button onClick={() => navigate("/bookmarks")}>Bookmarks</button>
-          <button onClick={() => navigate("/settings")}>Settings</button>
-        </div>
-      </aside>
+.nav-back {
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--lotus-300);
+  transition: color 0.22s ease, transform 0.15s ease;
+  display: flex;
+  align-items: center;
+}
 
-      {/* MAIN + RIGHT SECTION WRAPPER */}
-      <div className="profile-container">
-        {/* MAIN */}
-        <main className="profile-main">
-          <div className="profile-banner" />
+.nav-back:hover {
+  color: var(--lotus-200);
+  transform: translateX(-3px);
+}
 
-          <section className="profile-top">
-            <div className="avatar-block">
-              <div className="avatar">{defaultName.charAt(0)}</div>
-            </div>
+.saras-title {
+  font-weight: 800;
+  font-size: 24px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
 
-            <div className="profile-meta">
-              <div className="name-row">
-                <h1 className="profile-name">{defaultName}</h1>
-                <span className="profile-handle">@rajztiwari</span>
-              </div>
+/* Lotus and wheat branding */
+.lotus {
+  color: var(--lotus-200);
+  letter-spacing: 0.5px;
+}
 
-              <div className="stats-row">
-                <div className="follow-stats">
-                  <span><strong>694</strong> Following</span>
-                  <span><strong>159</strong> Followers</span>
-                </div>
+.softblue {
+  color: var(--wheat-300);
+  opacity: 0.98;
+}
 
-                <div className="impressions">
-                  <FaChartLine className="impr-icon" />
-                  <div className="impr-text">
-                    <div className="impr-number">12.3K</div>
-                    <div className="impr-label">Impressions</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+/* User login */
+.user-login {
+  font-weight: 500;
+  color: var(--lotus-300);
+  cursor: pointer;
+  transition: color 0.22s ease, transform 0.15s ease;
+}
 
-            <div className="profile-actions">
-              <button className="edit-btn" onClick={() => setShowEdit(true)}>Edit profile</button>
-            </div>
-          </section>
+.user-login:hover {
+  color: var(--lotus-200);
+  transform: translateY(-2px);
+}
 
-          {/* Tabs */}
-          <nav className="profile-tabs">
-            {["asked", "answered", "posts", "veena", "activity"].map((tab) => (
-              <button
-                key={tab}
-                className={`tab-btn ${active === tab ? "active" : ""}`}
-                onClick={() => setActive(tab)}
-              >
-                {tab === "asked"
-                  ? "Asked"
-                  : tab === "answered"
-                  ? "Answered"
-                  : tab === "posts"
-                  ? "Posts"
-                  : tab === "veena"
-                  ? "Asked Veena"
-                  : "Activity"}
-              </button>
-            ))}
-          </nav>
+/* 🌸 Layout */
+.saras-page {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 80px;
+  gap: 20px;
+}
 
-          {/* Content */}
-          <section className="profile-content">
-            {active === "asked" && (
-              <article className="content-card">
-                <h3 className="card-title">Asked Question</h3>
-                <p className="card-body">What are the long-term effects of machine learning on education systems?</p>
-                <div className="card-meta">Asked • 2 answers • 5 views</div>
-              </article>
-            )}
-            {active === "answered" && (
-              <article className="content-card">
-                <h3 className="card-title">Answered</h3>
-                <p className="card-body">AI can personalize learning experiences and help teachers identify problems early.</p>
-                <div className="card-meta">Answered • 12 upvotes • 3 comments</div>
-              </article>
-            )}
-            {active === "posts" && (
-              <article className="content-card">
-                <h3 className="card-title">Post</h3>
-                <p className="card-body">"Technology should empower curiosity — not replace it." — short thread on AI & education.</p>
-                <div className="card-meta">Posted • Jul 30</div>
-              </article>
-            )}
-            {active === "veena" && (
-              <article className="content-card">
-                <h3 className="card-title">Asked Veena</h3>
-                <p className="card-body">How does Veena AI handle moral/ethical ambiguity when answering user questions?</p>
-                <div className="card-meta">Veena • 1 reply</div>
-              </article>
-            )}
-            {active === "activity" && (
-              <article className="content-card">
-                <h3 className="card-title">Activity</h3>
-                <p className="card-body">Last active: 3 hours ago • 12 answers • 3 questions</p>
-              </article>
-            )}
-          </section>
-        </main>
+/* 🌸 Sidebar */
+.profile-sidebar {
+  width: 15%;
+  min-width: 180px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: sticky;
+  top: 90px;
+  height: 75vh;
+  padding-top: 10px;
+  border-right: 1px solid var(--border);
+  transition: background 0.2s ease;
+}
 
-        {/* RIGHT PANEL */}
-        <aside className="right-panel">
-          <div className="info-card">
-            <h3>Credentials & Highlights</h3>
-            <div className="info-item"><FaBriefcase /> Add employment credential</div>
-            <div className="info-item"><FaGraduationCap /> Add education credential</div>
-            <div className="info-item"><FaMapMarkerAlt /> Add location credential</div>
-            <div className="info-item joined"><FaCalendarAlt /> Joined May 2021</div>
-          </div>
+/* Sidebar Buttons */
+.side-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 
-          <div className="info-card">
-            <h3>Knows about</h3>
-            <p className="empty-note">You haven't added any topics yet.</p>
-            <button className="add-topic-btn">Add topics</button>
-          </div>
-        </aside>
-      </div>
+.side-buttons button {
+  border: 1px solid rgba(212,125,196,0.08);
+  background: transparent;
+  border-radius: 0;
+  color: var(--lotus-300);
+  font-weight: 500;
+  padding: 12px 18px;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.25s ease, background 0.25s ease;
+}
 
-      {/* Edit Modal */}
-      {showEdit && (
-        <div className="modal-backdrop" onClick={() => setShowEdit(false)}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <h2>Edit profile</h2>
-            <label>
-              Name
-              <input defaultValue={defaultName} />
-            </label>
-            <label>
-              Username
-              <input defaultValue="rajztiwari" />
-            </label>
-            <div className="modal-actions">
-              <button className="btn-cancel" onClick={() => setShowEdit(false)}>Cancel</button>
-              <button className="btn-save" onClick={() => setShowEdit(false)}>Save</button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
+/* Glass wipe hover (lotus tinted) */
+.side-buttons button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -110%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-glass);
+  transition: all 0.42s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.side-buttons button:hover::before {
+  left: 0;
+}
+
+.side-buttons button:hover {
+  color: var(--lotus-200);
+  background: rgba(255,255,255,0.02);
+}
+
+.side-active {
+  background: rgba(212,125,196,0.15) !important;
+  color: var(--lotus-200) !important;
+  font-weight: 600 !important;
+}
+
+/* Profile Container */
+.profile-container {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  padding: 0 40px 50px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 🌸 Main Profile Section */
+.profile-main {
+  flex: 1;
+  max-width: 760px;
+}
+
+.profile-banner {
+  height: 180px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--wheat-200), var(--lotus-100));
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  margin-bottom: 70px;
+}
+
+.profile-top {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  margin-top: -70px;
+  padding: 0 12px 12px 12px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fff, var(--wheat-100));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 42px;
+  color: var(--lotus-300);
+  border: 4px solid rgba(255,255,255,0.9);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  flex-shrink: 0;
+}
+
+.profile-meta {
+  flex: 1;
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--text);
+}
+
+.profile-handle {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.stats-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.follow-stats {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.follow-stats strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.impressions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212,125,196,0.08);
+  border: 1px solid rgba(212,125,196,0.12);
+  border-radius: 10px;
+  padding: 8px 14px;
+  transition: all 0.25s ease;
+}
+
+.impressions:hover {
+  background: rgba(212,125,196,0.12);
+  transform: translateY(-2px);
+}
+
+.impr-icon {
+  color: var(--lotus-300);
+  font-size: 18px;
+}
+
+.impr-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.impr-number {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.impr-label {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.profile-actions {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 8px;
+}
+
+.edit-btn {
+  border: 1px solid rgba(212,125,196,0.2);
+  background: transparent;
+  color: var(--lotus-300);
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.edit-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -110%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-glass);
+  transition: all 0.42s cubic-bezier(0.2, 0.9, 0.3, 1);
+  z-index: 0;
+}
+
+.edit-btn:hover::before {
+  left: 0;
+}
+
+.edit-btn:hover {
+  color: var(--lotus-200);
+  border-color: rgba(212,125,196,0.3);
+}
+
+/* Profile Tabs */
+.profile-tabs {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+  border-bottom: 2px solid var(--border);
+  padding-left: 6px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 12px 4px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.22s ease;
+  text-transform: capitalize;
+}
+
+.tab-btn:hover {
+  color: var(--lotus-300);
+}
+
+.tab-btn.active {
+  color: var(--lotus-200);
+}
+
+.tab-btn.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 3px;
+  background: var(--lotus-200);
+  border-radius: 3px 3px 0 0;
+}
+
+/* Profile Content */
+.profile-content {
+  padding: 24px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.content-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 22px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.content-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+}
+
+.card-title {
+  margin: 0 0 10px 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.card-body {
+  margin: 0 0 12px 0;
+  color: #444;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.card-meta {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* 🌸 Right Panel */
+.right-panel {
+  width: 300px;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.info-card h3 {
+  margin-top: 0;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--text);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  padding: 8px 0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.22s ease, transform 0.15s ease;
+}
+
+.info-item:hover {
+  color: var(--lotus-300);
+  transform: translateX(4px);
+}
+
+.info-item svg {
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.joined {
+  color: var(--text);
+  font-weight: 600;
+  cursor: default;
+}
+
+.joined:hover {
+  transform: none;
+}
+
+.empty-note {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 6px 0 14px 0;
+  line-height: 1.5;
+}
+
+.add-topic-btn {
+  background: var(--lotus-200);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.add-topic-btn:hover {
+  background: var(--lotus-300);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212,125,196,0.3);
+}
+
+/* 🌸 Edit Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: linear-gradient(180deg, #fff, var(--wheat-100));
+  border-radius: 16px;
+  padding: 28px 32px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  border: 1px solid var(--border);
+}
+
+.modal h2 {
+  margin: 0 0 20px 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.modal label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.modal input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(212,125,196,0.2);
+  background: rgba(255,255,255,0.7);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal input:focus {
+  border-color: var(--lotus-200);
+  box-shadow: 0 0 0 3px rgba(212,125,196,0.1);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.btn-cancel,
+.btn-save {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.btn-cancel {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.btn-cancel:hover {
+  background: rgba(0,0,0,0.03);
+  color: var(--text);
+}
+
+.btn-save {
+  background: var(--lotus-200);
+  border: none;
+  color: #fff;
+}
+
+.btn-save:hover {
+  background: var(--lotus-300);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212,125,196,0.3);
+}
+
+/* 🌸 Responsive Design */
+@media (max-width: 1200px) {
+  .right-panel {
+    display: none;
+  }
+  
+  .profile-container {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .saras-page {
+    flex-direction: column;
+  }
+
+  .profile-sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    border: none;
+    padding: 8px 6px;
+    gap: 8px;
+    position: relative;
+    top: 0;
+  }
+
+  .side-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .side-buttons button {
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    min-width: 80px;
+    text-align: center;
+  }
+
+  .profile-container {
+    padding: 18px;
+    flex-direction: column;
+  }
+
+  .profile-main {
+    max-width: 100%;
+  }
+
+  .saras-navbar {
+    padding: 12px 18px;
+  }
+
+  .nav-left-group {
+    gap: 12px;
+  }
+
+  .saras-title {
+    font-size: 18px;
+  }
+
+  .nav-back {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-top {
+    flex-direction: column;
+    margin-top: -40px;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    font-size: 36px;
+  }
+
+  .profile-name {
+    font-size: 20px;
+  }
+
+  .profile-banner {
+    height: 140px;
+  }
+
+  .stats-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .profile-tabs {
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .tab-btn {
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .saras-title {
+    font-size: 20px;
+  }
+
+  .side-buttons button {
+    min-width: 68px;
+    padding: 7px 8px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 20px 24px;
+  }
+
+  .follow-stats {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
