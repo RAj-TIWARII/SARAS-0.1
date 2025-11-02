@@ -1,0 +1,175 @@
+.worklab-page {
+  display: flex;
+  background: linear-gradient(to bottom right, #fff9f5, #fff5fb);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.worklab-main {
+  flex: 1;
+  padding: 100px 60px;
+}
+
+.worklab-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: #4a148c;
+}
+
+.worklab-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.stats-bar {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 25px;
+  color: #5a5a5a;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.add-project-btn {
+  background: linear-gradient(90deg, #eab6ff, #ffcc99);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-bottom: 30px;
+}
+.add-project-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 25px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.25s ease;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.project-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.project-summary {
+  color: #555;
+  font-size: 0.95rem;
+  margin: 10px 0;
+}
+
+.progress-bar {
+  height: 6px;
+  width: 100%;
+  background: #eee;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #eab6ff, #ffcc99);
+}
+
+.progress-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.tag-container {
+  margin: 10px 0;
+}
+.tag {
+  display: inline-block;
+  background: rgba(234, 182, 255, 0.15);
+  border: 1px solid rgba(234, 182, 255, 0.25);
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  margin: 4px;
+  color: #a14dc5;
+}
+
+.view-btn {
+  background: linear-gradient(90deg, #eab6ff, #ffcc99);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.view-btn:hover {
+  opacity: 0.9;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  width: 400px;
+  max-width: 90%;
+}
+.modal input,
+.modal textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.btn-cancel {
+  background: #ddd;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-save {
+  background: linear-gradient(90deg, #eab6ff, #ffcc99);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
