@@ -14,12 +14,13 @@ export default function Profile() {
     <div className="saras-page profile-page">
       {/* NAVBAR */}
       <header className="saras-navbar">
-        <div className="nav-left" onClick={() => navigate(-1)} aria-label="Back">
-          <FaArrowLeft />
-        </div>
-
-        <div className="saras-title" aria-hidden="true">
-          <span className="lotus">SARA</span><span className="softblue">S</span>
+        <div className="nav-left-group">
+          <div className="nav-back" onClick={() => navigate(-1)} aria-label="Back">
+            <FaArrowLeft />
+          </div>
+          <div className="saras-title" aria-hidden="true">
+            <span className="lotus">SARA</span><span className="softblue">S</span>
+          </div>
         </div>
 
         <div className="nav-right">
