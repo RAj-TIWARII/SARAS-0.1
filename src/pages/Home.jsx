@@ -75,11 +75,11 @@ const Home = () => {
         <div className="side-buttons">
           <button onClick={() => navigate("/")}>Home</button>
           <button onClick={() => navigate("/profile")}>Profile</button>
-          <button>Work Lab</button>
-          <button>Community</button>
-          <button>Messages</button>
-          <button>Bookmarks</button>
-          <button>Settings</button>
+          <button onClick={() => navigate("/worklab")}>Work Lab</button>
+          <button onClick={() => navigate("/community")}>Community</button>
+          <button onClick={() => navigate("/messages")}>Messages</button>
+          <button onClick={() => navigate("/bookmarks")}>Bookmarks</button>
+          <button onClick={() => navigate("/settings")}>Settings</button>
         </div>
       </aside>
 
