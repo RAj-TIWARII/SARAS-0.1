@@ -1,3 +1,20 @@
+:root{
+  /* Theme colors — wheat + lotus pink blend */
+  --wheat-100: #fbf3e6;   /* light wheat */
+  --wheat-200: #f3e0be;   /* warm wheat */
+  --wheat-300: #e8cfa0;   /* subtle accent */
+  --lotus-100: #f6e0f0;   /* very light lotus wash */
+  --lotus-200: #d47dc4;   /* primary lotus pink */
+  --lotus-300: #b85aa5;   /* darker lotus for hovers */
+  --glass: rgba(255,255,255,0.15);
+  --text: #222;
+  --muted: #666;
+  --card-bg: rgba(255,255,255,0.92);
+  --border: rgba(0,0,0,0.06);
+  --accent-glass: rgba(212,125,196,0.12);
+}
+
+/* base */
 html {
   scroll-behavior: smooth;
 }
@@ -5,8 +22,11 @@ html {
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(180deg, #fdf5e6, #f8e9f4);
-  color: #2e2e2e;
+  /* gentle wheat -> lotus vertical gradient */
+  background: linear-gradient(180deg, var(--wheat-100), var(--lotus-100));
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
 /* 🌸 Navbar */
@@ -20,9 +40,10 @@ body {
   align-items: center;
   padding: 14px 40px;
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.15);
-  transition: all 0.4s ease;
+  background: var(--glass);
+  transition: all 0.35s ease;
   z-index: 999;
+  border-bottom: 1px solid rgba(0,0,0,0.03);
 }
 
 .saras-navbar.hidden {
@@ -39,37 +60,53 @@ body {
 .saras-title {
   font-weight: 800;
   font-size: 24px;
+  display:flex;
+  gap:6px;
+  align-items:center;
 }
 
+/* lotus and wheat branding */
 .lotus {
-  color: #d47dc4;
+  color: var(--lotus-200);
+  letter-spacing: 0.5px;
 }
 
 .softblue {
-  color: #7fa4e2;
+  /* keep class name but repurpose color to wheat accent for S */
+  color: var(--wheat-300);
+  opacity: 0.98;
 }
 
+/* search */
 .nav-center input {
   width: 350px;
   padding: 8px 14px;
-  border-radius: 8px;
-  border: 1px solid rgba(150, 150, 150, 0.3);
-  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  border: 1px solid rgba(120,90,110,0.08);
+  background: rgba(255, 255, 255, 0.28);
   backdrop-filter: blur(5px);
   outline: none;
-  color: black;
+  color: var(--text);
   font-size: 14px;
+  transition: box-shadow .2s ease, transform .15s ease;
 }
 
+.nav-center input:focus{
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+}
+
+/* user login */
 .user-login {
   font-weight: 500;
-  color: #4a2c73;
+  color: var(--lotus-300);
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: color 0.22s ease, transform .15s ease;
 }
 
 .user-login:hover {
-  color: #9c27b0;
+  color: var(--lotus-200);
+  transform: translateY(-2px);
 }
 
 /* 🌸 Layout */
@@ -84,8 +121,8 @@ body {
 .profile-sidebar {
   width: 15%;
   min-width: 180px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -93,7 +130,8 @@ body {
   top: 90px;
   height: 75vh;
   padding-top: 10px;
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  border-right: 1px solid var(--border);
+  transition: background .2s ease;
 }
 
 /* Sidebar Buttons */
@@ -104,29 +142,29 @@ body {
 }
 
 .side-buttons button {
-  border: 1px solid rgba(180, 120, 255, 0.2);
+  border: 1px solid rgba(212,125,196,0.08);
   background: transparent;
   border-radius: 0;
-  color: #4a2c73;
+  color: var(--lotus-300);
   font-weight: 500;
   padding: 12px 18px;
   cursor: pointer;
   text-align: left;
   position: relative;
   overflow: hidden;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease, background .25s ease;
 }
 
-/* Glass wipe hover */
+/* Glass wipe hover (lotus tinted) */
 .side-buttons button::before {
   content: "";
   position: absolute;
   top: 0;
-  left: -100%;
+  left: -110%;
   width: 100%;
   height: 100%;
-  background: rgba(212, 125, 196, 0.15);
-  transition: all 0.4s ease;
+  background: var(--accent-glass);
+  transition: all 0.42s cubic-bezier(.2,.9,.3,1);
 }
 
 .side-buttons button:hover::before {
@@ -134,7 +172,8 @@ body {
 }
 
 .side-buttons button:hover {
-  color: #9c27b0;
+  color: var(--lotus-200);
+  background: rgba(255,255,255,0.02);
 }
 
 /* 🌸 Main Section */
@@ -152,11 +191,17 @@ body {
 
 /* Card sharp structure */
 .question-card {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(200, 200, 200, 0.5);
-  border-radius: 0;
+  background: var(--card-bg);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 6px;
   padding: 20px 25px;
   text-align: left;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.question-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.06);
 }
 
 /* User info layout */
@@ -168,13 +213,13 @@ body {
   margin: 0;
   font-size: 15px;
   font-weight: 600;
-  color: #333;
+  color: #222;
 }
 
 .user-handle {
   margin: 2px 0 0 0;
   font-size: 13px;
-  color: gray;
+  color: var(--muted);
 }
 
 /* Question & Answer */
@@ -185,7 +230,7 @@ body {
 .question-text {
   font-size: 18px;
   font-weight: 600;
-  color: #1c1c1c;
+  color: #111;
   margin-bottom: 8px;
   line-height: 1.4;
 }
@@ -204,22 +249,28 @@ body {
 }
 
 .question-actions button {
-  border: 1px solid rgba(180, 120, 255, 0.3);
+  border: 1px solid rgba(212,125,196,0.18);
   background: transparent;
-  color: #4a2c73;
+  color: var(--lotus-300);
   padding: 7px 14px;
   font-size: 15px;
   cursor: pointer;
-  border-radius: 0;
-  transition: all 0.3s ease;
+  border-radius: 4px;
+  transition: all 0.25s ease;
 }
 
 .question-actions button:hover {
-  background: rgba(212, 125, 196, 0.15);
-  color: #9c27b0;
+  background: rgba(212,125,196,0.12);
+  color: var(--lotus-200);
 }
 
-/* Responsive */
+/* small improvements for readability on low-contrast screens */
+@media (prefers-contrast: more){
+  .question-card { border-color: rgba(0,0,0,0.10); }
+  .nav-center input { border-color: rgba(0,0,0,0.12); }
+}
+
+/* Responsive: stack & tighten */
 @media (max-width: 900px) {
   .saras-page {
     flex-direction: column;
@@ -231,14 +282,49 @@ body {
     flex-direction: row;
     justify-content: space-around;
     border: none;
+    padding: 8px 6px;
+    gap: 8px;
+  }
+
+  .side-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .side-buttons button {
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    min-width: 80px;
+    text-align:center;
   }
 
   .saras-main {
     width: 100%;
-    padding: 20px;
+    padding: 18px;
   }
 
   .nav-center input {
-    width: 220px;
+    width: 90%;
+    max-width: 420px;
   }
+
+  .saras-navbar {
+    padding: 12px 18px;
+  }
+
+  .question-card {
+    padding: 16px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px){
+  .saras-title { font-size: 20px; }
+  .nav-center input { font-size: 13px; padding: 7px 12px; }
+  .side-buttons button { min-width: 68px; padding: 7px 8px; font-size:13px; }
+  .user-login { font-size: 14px; }
 }
