@@ -1,0 +1,189 @@
+.community-page {
+  display: flex;
+  background: linear-gradient(to bottom right, #fff9f5, #fff5fb);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.community-main {
+  flex: 1;
+  padding: 100px 60px;
+}
+
+.community-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: #4a148c;
+}
+
+.community-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.add-discussion-btn {
+  background: linear-gradient(90deg, #eab6ff, #ffcc99);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-bottom: 25px;
+}
+.add-discussion-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.discussion-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.discussion-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.25s ease;
+}
+.discussion-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.user-info h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+.user-info p {
+  color: #777;
+  margin: 2px 0 10px;
+}
+
+.discussion-content h3 {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #3a0d72;
+}
+.discussion-content p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.discussion-tags {
+  margin: 10px 0;
+}
+.tag {
+  display: inline-block;
+  background: rgba(234, 182, 255, 0.15);
+  border: 1px solid rgba(234, 182, 255, 0.25);
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  margin: 4px;
+  color: #a14dc5;
+}
+
+.discussion-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+}
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.action-btn:hover {
+  color: #a14dc5;
+}
+
+/* Right Panel */
+.right-panel {
+  width: 260px;
+  padding: 100px 25px 0;
+}
+.info-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.info-card h3 {
+  color: #4a148c;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+.trend-list {
+  list-style: none;
+  padding: 0;
+  color: #555;
+}
+.trend-list li {
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+.trend-list li:hover {
+  color: #a14dc5;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  width: 400px;
+  max-width: 90%;
+}
+.modal input,
+.modal textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.btn-cancel {
+  background: #ddd;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-save {
+  background: linear-gradient(90deg, #eab6ff, #ffcc99);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
