@@ -4,25 +4,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #fff9f5, #fff3fa);
+  background: #faf9f7;
   font-family: "Inter", sans-serif;
+  color: #1f1f1f;
 }
 
+/* ===== LOGIN CONTAINER ===== */
 .login-glass {
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: #ffffffd9;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
   padding: 40px 50px;
-  width: 400px;
+  width: 380px;
   text-align: center;
-  backdrop-filter: blur(15px);
-  animation: fadeIn 0.8s ease-in-out;
+  animation: fadeIn 0.6s ease-out;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -32,24 +34,26 @@
 
 /* ===== BRAND ===== */
 .saras-logo {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.1rem;
+  margin-bottom: 0.3rem;
   font-weight: 700;
+  color: #2b2b2b;
+  letter-spacing: 0.5px;
 }
 
 .lotus {
-  color: #d49df8;
+  color: #b98edc;
 }
 
 .softblue {
-  color: #f7c480;
+  color: #d9b680;
 }
 
 .tagline {
   font-size: 0.9rem;
   color: #666;
-  margin-bottom: 25px;
-  letter-spacing: 0.3px;
+  margin-bottom: 30px;
+  letter-spacing: 0.2px;
 }
 
 /* ===== FORM ===== */
@@ -58,31 +62,32 @@
 }
 
 .login-form h2 {
-  color: #3a0d72;
-  margin-bottom: 5px;
+  color: #2b2b2b;
+  font-weight: 600;
+  margin-bottom: 4px;
 }
 
 .form-subtext {
-  color: #7a7a7a;
+  color: #666;
   font-size: 0.9rem;
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 }
 
 .login-form input {
   width: 100%;
-  border: 1px solid rgba(210, 180, 255, 0.4);
-  border-radius: 10px;
-  padding: 10px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 10px 12px;
   font-size: 0.95rem;
-  margin-bottom: 15px;
-  background: rgba(255, 255, 255, 0.5);
-  transition: all 0.3s ease;
+  margin-bottom: 14px;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .login-form input:focus {
   outline: none;
-  border-color: #d49df8;
-  box-shadow: 0 0 8px rgba(212, 157, 248, 0.3);
+  border-color: #b98edc;
+  box-shadow: 0 0 0 2px rgba(185, 142, 220, 0.2);
 }
 
 /* ===== OPTIONS ===== */
@@ -91,42 +96,41 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
-  color: #666;
+  color: #555;
   margin-bottom: 20px;
 }
 
 .forgot-link {
-  color: #7a2fbf;
+  color: #5a3d9b;
   text-decoration: none;
-  transition: 0.3s;
+  transition: color 0.2s;
 }
 
 .forgot-link:hover {
-  color: #a865e2;
+  color: #7e5fc9;
 }
 
 /* ===== BUTTONS ===== */
 .login-btn {
   width: 100%;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 12px;
-  background: linear-gradient(90deg, #eab6ff, #f7c480);
+  background: #2b2b2b;
   color: #fff;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: background 0.25s ease;
   font-size: 1rem;
 }
 
 .login-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(234, 182, 255, 0.4);
+  background: #444;
 }
 
 /* ===== DIVIDER ===== */
 .divider {
-  margin: 20px 0;
+  margin: 22px 0;
   color: #aaa;
   position: relative;
   font-size: 0.85rem;
@@ -158,18 +162,18 @@
 }
 
 .social-login button {
-  border: none;
-  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.6);
+  background: #fff;
   cursor: pointer;
   font-size: 0.9rem;
-  color: #555;
+  color: #333;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  transition: 0.3s;
+  transition: background 0.25s ease;
 }
 
 .social-login img {
@@ -178,51 +182,52 @@
 }
 
 .social-login button:hover {
-  background: rgba(234, 182, 255, 0.3);
+  background: #f2f2f2;
 }
 
 /* ===== REGISTER TEXT ===== */
 .register-text {
   margin-top: 20px;
-  color: #777;
+  color: #555;
   font-size: 0.9rem;
 }
 
 .register-text span {
-  color: #7a2fbf;
+  color: #5a3d9b;
   cursor: pointer;
   font-weight: 500;
-  transition: 0.3s;
+  transition: color 0.2s;
 }
 
 .register-text span:hover {
-  color: #a865e2;
+  color: #7e5fc9;
 }
 
 /* ===== FOOTER QUOTE ===== */
 .footer-quote {
   margin-top: 25px;
   font-size: 0.85rem;
-  color: #9a7bbd;
-  letter-spacing: 0.4px;
+  color: #888;
+  letter-spacing: 0.3px;
 }
 
 /* ===== ERROR ===== */
 .error-text {
-  color: #d10000;
+  color: #c63737;
   font-size: 0.85rem;
   margin-bottom: 10px;
+  text-align: left;
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 480px) {
   .login-glass {
-    width: 85%;
+    width: 90%;
     padding: 30px;
   }
 
   .login-form input {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .login-btn {
