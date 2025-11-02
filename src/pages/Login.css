@@ -1,0 +1,231 @@
+/* ===== LOGIN PAGE ===== */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fff9f5, #fff3fa);
+  font-family: "Inter", sans-serif;
+}
+
+.login-glass {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 40px 50px;
+  width: 400px;
+  text-align: center;
+  backdrop-filter: blur(15px);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== BRAND ===== */
+.saras-logo {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.lotus {
+  color: #d49df8;
+}
+
+.softblue {
+  color: #f7c480;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 25px;
+  letter-spacing: 0.3px;
+}
+
+/* ===== FORM ===== */
+.login-form {
+  text-align: center;
+}
+
+.login-form h2 {
+  color: #3a0d72;
+  margin-bottom: 5px;
+}
+
+.form-subtext {
+  color: #7a7a7a;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+.login-form input {
+  width: 100%;
+  border: 1px solid rgba(210, 180, 255, 0.4);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #d49df8;
+  box-shadow: 0 0 8px rgba(212, 157, 248, 0.3);
+}
+
+/* ===== OPTIONS ===== */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.forgot-link {
+  color: #7a2fbf;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.forgot-link:hover {
+  color: #a865e2;
+}
+
+/* ===== BUTTONS ===== */
+.login-btn {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  background: linear-gradient(90deg, #eab6ff, #f7c480);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 1rem;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(234, 182, 255, 0.4);
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  margin: 20px 0;
+  color: #aaa;
+  position: relative;
+  font-size: 0.85rem;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 42%;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+/* ===== SOCIAL ===== */
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-login button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+.social-login img {
+  width: 20px;
+  height: 20px;
+}
+
+.social-login button:hover {
+  background: rgba(234, 182, 255, 0.3);
+}
+
+/* ===== REGISTER TEXT ===== */
+.register-text {
+  margin-top: 20px;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.register-text span {
+  color: #7a2fbf;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.register-text span:hover {
+  color: #a865e2;
+}
+
+/* ===== FOOTER QUOTE ===== */
+.footer-quote {
+  margin-top: 25px;
+  font-size: 0.85rem;
+  color: #9a7bbd;
+  letter-spacing: 0.4px;
+}
+
+/* ===== ERROR ===== */
+.error-text {
+  color: #d10000;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .login-glass {
+    width: 85%;
+    padding: 30px;
+  }
+
+  .login-form input {
+    font-size: 0.85rem;
+  }
+
+  .login-btn {
+    font-size: 0.9rem;
+  }
+}
