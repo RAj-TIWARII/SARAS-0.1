@@ -36,11 +36,28 @@ export default function Profile() {
         <div className="side-buttons">
           <button className="side-btn" onClick={() => navigate("/")}>Home</button>
           <button className="side-btn side-active" onClick={() => navigate("/profile")}>Profile</button>
-          <button className="side-btn">Work Lab</button>
-          <button className="side-btn">Community</button>
-          <button className="side-btn">Messages</button>
-          <button className="side-btn">Bookmarks</button>
-          <button className="side-btn">Settings</button>
+         <button
+  className="side-btn"
+  onClick={() => {
+    console.log("Navigating to Work Lab...");
+    navigate("/worklab");
+  }}
+>
+  Work Lab
+</button>
+
+          <button className="side-btn" onClick={() => navigate("/community")}>
+  Community
+</button>
+          <button className="side-btn" onClick={() => navigate("/messages")}>
+  Messages
+</button>
+
+ <button className="side-btn" onClick={() => navigate("/bookmarks")}>Bookmarks</button>
+
+
+<button className="side-btn" onClick={() => navigate("/settings")}>Settings</button>
+
         </div>
       </aside>
 
