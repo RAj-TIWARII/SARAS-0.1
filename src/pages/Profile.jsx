@@ -22,42 +22,21 @@ export default function Profile() {
           <span className="lotus">SARA</span><span className="softblue">S</span>
         </div>
 
-        <div className="nav-center">
-          <input className="nav-search" type="search" placeholder="Search questions..." />
-        </div>
-
         <div className="nav-right">
-          <button className="login-pill">Login</button>
+          <span className="user-login">Login</span>
         </div>
       </header>
 
       {/* SIDEBAR */}
       <aside className="profile-sidebar">
         <div className="side-buttons">
-          <button className="side-btn" onClick={() => navigate("/")}>Home</button>
-          <button className="side-btn side-active" onClick={() => navigate("/profile")}>Profile</button>
-         <button
-  className="side-btn"
-  onClick={() => {
-    console.log("Navigating to Work Lab...");
-    navigate("/worklab");
-  }}
->
-  Work Lab
-</button>
-
-          <button className="side-btn" onClick={() => navigate("/community")}>
-  Community
-</button>
-          <button className="side-btn" onClick={() => navigate("/messages")}>
-  Messages
-</button>
-
- <button className="side-btn" onClick={() => navigate("/bookmarks")}>Bookmarks</button>
-
-
-<button className="side-btn" onClick={() => navigate("/settings")}>Settings</button>
-
+          <button onClick={() => navigate("/")}>Home</button>
+          <button className="side-active" onClick={() => navigate("/profile")}>Profile</button>
+          <button onClick={() => navigate("/worklab")}>Work Lab</button>
+          <button onClick={() => navigate("/community")}>Community</button>
+          <button onClick={() => navigate("/messages")}>Messages</button>
+          <button onClick={() => navigate("/bookmarks")}>Bookmarks</button>
+          <button onClick={() => navigate("/settings")}>Settings</button>
         </div>
       </aside>
 
@@ -139,7 +118,7 @@ export default function Profile() {
             {active === "posts" && (
               <article className="content-card">
                 <h3 className="card-title">Post</h3>
-                <p className="card-body">“Technology should empower curiosity — not replace it.” — short thread on AI & education.</p>
+                <p className="card-body">"Technology should empower curiosity — not replace it." — short thread on AI & education.</p>
                 <div className="card-meta">Posted • Jul 30</div>
               </article>
             )}
@@ -171,7 +150,7 @@ export default function Profile() {
 
           <div className="info-card">
             <h3>Knows about</h3>
-            <p className="empty-note">You haven’t added any topics yet.</p>
+            <p className="empty-note">You haven't added any topics yet.</p>
             <button className="add-topic-btn">Add topics</button>
           </div>
         </aside>
@@ -199,4 +178,4 @@ export default function Profile() {
       )}
     </div>
   );
-}   
+}
